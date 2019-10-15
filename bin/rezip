@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+mkdir /tmp/work
+cd /tmp/work
+curl "$1" -O
+mkdir unpack
+cd unpack
+7z x ../*.zip
+7z a -sfx7zConWin64.sfx /output/archive.exe .

@@ -1,0 +1,12 @@
+#!/bin/bash
+set -ev
+cd /data
+echo pwd = $(pwd)
+find . -name "*.zip"
+for zipfile in $(find $(pwd) -name "*.win32.x86_64.zip"); do
+    rm -fr /tmp/unpack
+    mkdir /tmp/unpack
+    cd /tmp/unpack
+    7z x "$zipfile"
+    7z a -sfx7zConWin64.sfx "${zipfile%.zip}.7z.exe"
+done
